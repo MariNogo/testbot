@@ -42,6 +42,9 @@ def get_price(message: telebot.types.Message):
     except Exception as e:
         bot.reply_to(message, f'Что-то пошло не так с {e}')
     else:
+        amount = int(amount)
+        if amount >=1:
+            total_base = str(float(amount * total_base))
         text = f'Переводим {quote} в {base}\n{amount} {quote} = {total_base} {base}'
         bot.send_message(message.chat.id, text)
 
